@@ -29,7 +29,7 @@ namespace Project.Name
             // Add framework services.
             services.AddMvc();
             services.AddCors();
-            services.AddCors(options => options.AddPolicy("AllowSpecific", p => p.WithOrigins("dev.project.name.com", "*.project.name.com")
+            services.AddCors(options => options.AddPolicy("AllowAny", p => p.AllowAnyOrigin()
                                                                         .AllowAnyMethod()
                                                                         .AllowAnyHeader()));
 
@@ -44,7 +44,7 @@ namespace Project.Name
             app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
-
+            app.UseCors("AllowAny");
             app.UseMvc();
 
 
